@@ -11,7 +11,9 @@ kubectl create configmap fresco-config --from-literal=SERVER_URL=https://www.fre
 
 kubectl create secret generic fresco-secret --from-literal=user=admin --from-literal=pass=pass
 
-  fresco-config.yaml
+ 
+
+fresco-config.yaml
 
 apiVersion: v1
 kind: ConfigMap
@@ -21,7 +23,8 @@ data:
   SERVER_URL: "https://www.fresco.me"
 
 
-    fresco-secret.yaml
+   
+fresco-secret.yaml
 
 apiVersion: v1
 kind: Secret
@@ -32,7 +35,8 @@ data:
   user: YWRtaW4=
   pass: cGFzcw==
 
-  fresco-pv.yaml  
+ 
+fresco-pv.yaml  
 
   apiVersion: v1
 kind: PersistentVolume
@@ -46,6 +50,7 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /tmp/fresco
+
 
 
 fresco-pvc.yaml
@@ -62,6 +67,7 @@ spec:
       storage: 50Mi
 
     
+
 fresco-nginx-pod.yaml
 
   apiVersion: v1
@@ -85,6 +91,7 @@ spec:
   - name: secret-volume
     secret:
       secretName: fresco-secret
+
 
 emp-role.yaml
   
@@ -116,7 +123,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 
-  nginx.yaml
+ fresco-nginx-pod.yaml
 
   apiVersion: v1
 kind: Pod
